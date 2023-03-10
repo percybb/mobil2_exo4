@@ -10,7 +10,7 @@ import android.view.View;
 
 public class Termometro extends View {
 
-    public int valini;
+    private int valini;
 
     @Override
     protected void onDraw(Canvas canvas) {  //permitira diseñar nuestro control
@@ -25,7 +25,17 @@ public class Termometro extends View {
 
         Paint pinceau = new Paint(10);
         pinceau.setStrokeWidth(5);
-        pinceau.setColor(Color.rgb(255,0,0));
+        //pinceau.setColor(Color.rgb(255,0,0));
+
+      if(valini>15)
+      {
+          pinceau.setColor(Color.rgb(255,255-((2*valini)+55),255-((2*valini)+55)));
+      }
+      else
+      {
+            pinceau.setColor(Color.rgb(255-((-3*valini)+105),255-((-3*valini)+105),255));
+      }
+
 
         canvas.drawRect (xs-10,ys,xf+10,yf,pinceau);
         canvas.drawCircle(xs,ys,40,pinceau);
